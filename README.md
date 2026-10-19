@@ -1,5 +1,13 @@
 # design-software-reference-data-mfe (React 18 + TypeScript + Vite)
 
+## Validación integrada HU-REF-020 / R1
+
+El perfil `reference` configura el API real a través del proxy del shell en `http://localhost:5000/reference-api/api/v1`. El host inyecta `permissions` desde IAM y `getAccessToken`; el adaptador HTTP consulta ese getter en cada solicitud y envía el bearer token. El remote no lee ni persiste credenciales del navegador. La ausencia de token no concede permisos: el servicio responde 401/403 según corresponda.
+
+Ejecuta `validation/frontend-reference/run.ps1` desde docker-infra para montar este remote dentro de web-shell mediante Module Federation y ejecutar las pruebas reales. La guía del perfil y el ADR `docs/adr/ADR-HU-REF-020-real-frontend-integration.md` de web-shell detallan decisiones y evidencia. La prueba de R1 crea catálogos desde esta interfaz durante la caída de RabbitMQ; las tablas outbox/inbox/projection verifican la recuperación, no una simulación visual de la mensajería.
+
+La base descargada, sus pantallas y su modo demo previo son heredados. Esta entrega conecta el JWT y verifica el modo real. El modo `reference` define un API explícito para desactivar los datos demo. No agregues secretos a variables `VITE_*`.
+
 Micro-frontend **remote** del dominio `reference-data`. Construido con Vite y Module Federation 2.0
 (`@module-federation/vite`), conforme a ADR-009. Consume solo SU contrato, se despliega de forma
 independiente y es responsive.

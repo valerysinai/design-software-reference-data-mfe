@@ -5,6 +5,14 @@ export interface ApiErrorBody {
   };
 }
 
+// The host owns the session. This single mounted remote reads the current token
+// for each request and never persists credentials or derives authorization itself.
+let tokenProvider: (() => string | null) | undefined;
+export function setReferenceDataTokenProvider(provider?: () => string | null): () => void {
+  tokenProvider = provider;
+  return () => { if (tokenProvider === provider) tokenProvider = undefined; };
+}
+
 export class ReferenceDataHttpError extends Error {
   constructor(
     message: string,
@@ -39,14 +47,15 @@ export async function requestReferenceData<T>(
 ): Promise<T> {
   const url = buildReferenceDataUrl(baseUrl, path);
   let response: Response;
+  const headers = new Headers(init.headers);
+  headers.set('Accept', 'application/json');
+  if (init.body && !headers.has('Content-Type')) headers.set('Content-Type', 'application/json');
+  const token = tokenProvider?.();
+  if (token) headers.set('Authorization', `Bearer ${token}`);
   try {
     response = await fetch(url, {
       ...init,
-      headers: {
-        Accept: 'application/json',
-        ...(init.body ? { 'Content-Type': 'application/json' } : {}),
-        ...init.headers,
-      },
+      headers,
     });
   } catch (error) {
     if (error instanceof Error && error.name === 'AbortError') throw error;

@@ -1,4 +1,5 @@
-import { useRef, useState, type FC } from 'react';
+import { useLayoutEffect, useRef, useState, type FC } from 'react';
+import { setReferenceDataTokenProvider } from './adapter/out/http/referenceDataHttp.js';
 import { Link, useInRouterContext } from 'react-router-dom';
 
 import { useDepartments } from './application/useDepartments.js';
@@ -93,7 +94,8 @@ function ParameterizationBackLink() {
   );
 }
 
-const App: FC<ReferenceDataMfeProps> = ({ permissions = [] }) => {
+const App: FC<ReferenceDataMfeProps> = ({ permissions = [], getAccessToken }) => {
+  useLayoutEffect(() => setReferenceDataTokenProvider(getAccessToken), [getAccessToken]);
   const canManageHierarchy = permissions.includes(REF_HIERARCHY_MANAGE);
   const apiBaseUrl = import.meta.env.VITE_REFERENCE_DATA_API_BASE_URL?.trim();
   const demoMode = import.meta.env.DEV && !apiBaseUrl;
