@@ -1,6 +1,7 @@
 export interface ReferenceDataMfeProps {
   basePath?: string;
   permissions?: readonly string[];
+  getAccessToken?: () => string | null;
 }
 
 export const REF_HIERARCHY_MANAGE = 'REF_HIERARCHY_MANAGE';
