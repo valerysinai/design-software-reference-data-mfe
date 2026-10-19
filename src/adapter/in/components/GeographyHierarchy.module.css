@@ -1,0 +1,652 @@
+.root {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #e2e7ed;
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 2px 3px rgb(16 28 46 / 8%);
+  color: #142033;
+}
+
+.tabs {
+  display: flex;
+  min-height: 3.125rem;
+  overflow-x: auto;
+  border-bottom: 1px solid #e2e7ed;
+  padding: 0 1.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.tab,
+.activeTab {
+  position: relative;
+  flex: 0 0 auto;
+  min-height: 3.125rem;
+  padding: 0.625rem 0.875rem;
+  border: 0;
+  background: transparent;
+  color: #40536d;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.tab:hover {
+  background: #f7f9fc;
+  color: #007a39;
+}
+
+.activeTab {
+  color: #007a39;
+}
+
+.activeTab::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 3px;
+  background: #00843d;
+  content: "";
+}
+
+.tab:focus-visible,
+.activeTab:focus-visible,
+.primaryButton:focus-visible,
+.secondaryButton:focus-visible,
+.iconButton:focus-visible,
+.deactivateButton:focus-visible,
+.pageButton:focus-visible,
+.currentPageButton:focus-visible,
+.recordName:focus-visible,
+.tableViewport:focus-visible,
+.pageSizeControl select:focus-visible,
+.form input:focus-visible,
+.form select:focus-visible,
+.modal button:focus-visible {
+  outline: 3px solid #1976b9;
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+.panel {
+  min-width: 0;
+  outline: none;
+}
+
+.levelHeading {
+  box-sizing: border-box;
+  display: flex;
+  min-height: 4.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+}
+
+.levelHeading h2 {
+  margin: 0;
+  color: #111c2e;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.primaryButton {
+  box-sizing: border-box;
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.625rem 1rem;
+  border: 1px solid #00843d;
+  border-radius: 0.4rem;
+  background: #00843d;
+  color: #fff;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.primaryButton:hover:not(:disabled) {
+  border-color: #006c32;
+  background: #006c32;
+}
+
+.primaryButton:disabled,
+.secondaryButton:disabled,
+.iconButton:disabled,
+.deactivateButton:disabled,
+.pageButton:disabled,
+.currentPageButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.plus {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.permissionNotice,
+.stateMessage,
+.errorMessage {
+  margin: 0;
+  padding: 1rem 1.5rem;
+  color: #4b607a;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.stateMessage {
+  border-top: 1px solid #e5e9ef;
+  background: #fbfcfe;
+}
+
+.errorMessage {
+  color: #a52626;
+}
+
+.tableViewport {
+  max-width: 100%;
+  overflow-x: auto;
+  border-top: 1px solid #e2e7ed;
+  border-bottom: 1px solid #e2e7ed;
+}
+
+.table {
+  width: 100%;
+  min-width: 42rem;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table thead {
+  background: #fbfbfd;
+  color: #40536d;
+}
+
+.table th {
+  box-sizing: border-box;
+  height: 2.75rem;
+  padding: 0.625rem 1.125rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.table th:first-child {
+  width: 20%;
+}
+
+.table th:nth-child(2) {
+  width: 32%;
+}
+
+.table th:nth-child(3) {
+  width: 28%;
+}
+
+.table th:last-child {
+  width: 20%;
+}
+
+.tableWithParent th:first-child {
+  width: 15%;
+}
+
+.tableWithParent th:nth-child(2) {
+  width: 25%;
+}
+
+.tableWithParent th:nth-child(3) {
+  width: 24%;
+}
+
+.tableWithParent th:nth-child(4) {
+  width: 19%;
+}
+
+.tableWithParent th:last-child {
+  width: 17%;
+}
+
+.table tbody tr {
+  border-top: 1px solid #e5e9ef;
+}
+
+.table td {
+  box-sizing: border-box;
+  height: 4.375rem;
+  padding: 0.625rem 1.125rem;
+  color: #142033;
+  font-size: 1rem;
+}
+
+.codeCell {
+  color: #40536d !important;
+}
+
+.parentCell {
+  color: #40536d !important;
+}
+
+.statusBadge {
+  display: inline-flex;
+  min-height: 1.75rem;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.625rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.statusIcon {
+  width: 0.875rem;
+  height: 0.875rem;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.4;
+}
+
+.activeStatus {
+  border-color: #9ce8bd;
+  background: #ecfdf3;
+  color: #007a39;
+}
+
+.inactiveStatus {
+  border-color: #cbd5df;
+  background: #f1f5f9;
+  color: #526176;
+}
+
+.unknownStatus {
+  border-color: #d8dee8;
+  background: #f8fafc;
+  color: #526176;
+}
+
+.demoBadge {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid #e4c66b;
+  border-radius: 999px;
+  background: #fff8df;
+  color: #594500;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.recordName {
+  padding: 0.375rem 0;
+  border: 0;
+  background: transparent;
+  color: #101b2e;
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.recordName:hover {
+  color: #007a39;
+}
+
+.rowActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.iconButton {
+  display: inline-grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 0;
+  border-radius: 0.375rem;
+  background: transparent;
+  color: #101b2e;
+  cursor: pointer;
+}
+
+.iconButton:hover:not(:disabled) {
+  background: #f0f5f2;
+  color: #007a39;
+}
+
+.iconButton svg {
+  width: 1.375rem;
+  height: 1.375rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.deactivateButton {
+  min-height: 2.5rem;
+  padding: 0.375rem 0.625rem;
+  border: 1px solid #cbd5df;
+  border-radius: 0.375rem;
+  background: #fff;
+  color: #34465d;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.deactivateButton:hover:not(:disabled) {
+  border-color: #a52626;
+  color: #a52626;
+}
+
+.emptyCell {
+  height: auto !important;
+  padding: 2rem 1.375rem !important;
+  color: #4b607a !important;
+  text-align: center;
+}
+
+.pagination {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) auto minmax(10rem, 1fr);
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+}
+
+.paginationSummary {
+  color: #40536d;
+  font-size: 1rem;
+}
+
+.pageSizeControl {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 0.5rem;
+  color: #40536d;
+  white-space: nowrap;
+}
+
+.pageSizeControl select {
+  box-sizing: border-box;
+  min-width: 6rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #cbd5df;
+  border-radius: 0.5rem;
+  background: #fff;
+  color: #142033;
+  font: inherit;
+}
+
+.pageSizeControl select:focus-visible {
+  outline: 3px solid #1976b9;
+  outline-offset: 2px;
+}
+
+.pageControls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.pageButton,
+.currentPageButton,
+.secondaryButton {
+  box-sizing: border-box;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #cbd5df;
+  border-radius: 0.5rem;
+  background: #fff;
+  color: #24364e;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.pageButton:hover:not(:disabled),
+.secondaryButton:hover:not(:disabled) {
+  background: #f5f7fa;
+}
+
+.currentPageButton {
+  min-width: 2.75rem;
+  border-color: #00843d;
+  background: #00843d;
+  color: #fff;
+}
+
+.currentPageButton:hover:not(:disabled) {
+  background: #006c32;
+}
+
+.pageButton:disabled {
+  color: #64748b;
+}
+
+.form,
+.confirmation {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid #e2e7ed;
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(16 28 46 / 6%);
+}
+
+.modalBackdrop {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  overflow-y: auto;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgb(16 28 46 / 48%);
+}
+
+.modal {
+  box-sizing: border-box;
+  width: min(100%, 36rem);
+  max-height: min(90vh, 52rem);
+  overflow-y: auto;
+  border: 1px solid #e2e7ed;
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 16px 48px rgb(16 28 46 / 24%);
+}
+
+.modal .form {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.form h2,
+.confirmation h2,
+.confirmation p {
+  margin: 0;
+}
+
+.form h2,
+.confirmation h2 {
+  color: #111c2e;
+  font-size: 1.25rem;
+}
+
+.form label {
+  display: grid;
+  gap: 0.375rem;
+  color: #24364e;
+  font-weight: 650;
+}
+
+.form label span {
+  color: #607087;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.form input,
+.form select {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 2.875rem;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid #cbd5df;
+  border-radius: 0.375rem;
+  background: #fff;
+  color: #142033;
+  font: inherit;
+}
+
+.form input:focus-visible,
+.form select:focus-visible {
+  border-color: #1976b9;
+}
+
+.formActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.625rem;
+  margin-top: 0.25rem;
+}
+
+.secondaryButton {
+  min-height: 2.875rem;
+}
+
+.confirmation {
+  border-color: #f0caca;
+  background: #fff;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 760px) {
+  .tabs {
+    padding: 0 0.5rem;
+  }
+
+  .tab,
+  .activeTab {
+    padding-inline: 0.875rem;
+    font-size: 1rem;
+  }
+
+  .levelHeading {
+    min-height: auto;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .levelHeading h2 {
+    padding-top: 0.5rem;
+  }
+
+  .primaryButton {
+    min-height: 3rem;
+    padding-inline: 0.875rem;
+    font-size: 1rem;
+  }
+
+  .table {
+    min-width: 42rem;
+  }
+
+  .pagination {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 1rem;
+  }
+
+  .paginationSummary {
+    justify-self: start;
+  }
+
+  .pageSizeControl {
+    justify-self: center;
+  }
+
+  .pageControls {
+    width: 100%;
+  }
+
+  .form,
+  .confirmation {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .modalBackdrop {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .levelHeading {
+    flex-direction: column;
+  }
+
+  .levelHeading .primaryButton {
+    width: 100%;
+  }
+
+  .pageControls {
+    gap: 0.375rem;
+  }
+
+  .pageButton,
+  .currentPageButton {
+    min-height: 2.875rem;
+    padding-inline: 0.625rem;
+  }
+
+  .formActions > button {
+    flex: 1 1 auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton {
+    transition: none;
+  }
+}

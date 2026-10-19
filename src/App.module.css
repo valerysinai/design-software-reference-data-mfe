@@ -1,0 +1,124 @@
+.root {
+  box-sizing: border-box;
+  min-height: calc(100vh - 1rem);
+  padding: 3rem clamp(1rem, 6.4vw, 6.5rem);
+  background: #f7f9fc;
+  color: #111c2e;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+.header {
+  display: grid;
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  justify-items: start;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.backLabel {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 0.75rem;
+  color: #00843d;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.backLabel:hover {
+  text-decoration: underline;
+}
+
+.backLabel:focus-visible {
+  border-radius: 0.2rem;
+  outline: 3px solid #1976b9;
+  outline-offset: 3px;
+}
+
+.title {
+  margin: 0;
+  color: #101b2e;
+  font-size: clamp(2rem, 2.25vw, 2.25rem);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+  line-height: 1.16;
+}
+
+.description {
+  margin: 0;
+  color: #4b607a;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.main {
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+}
+
+.sectionTabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #dce3eb;
+}
+
+.sectionTabs button {
+  min-height: 2.75rem;
+  padding: 0.625rem 0.875rem;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: #40536d;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sectionTabs button[aria-current="page"] {
+  border-bottom-color: #00843d;
+  color: #007a39;
+}
+
+.sectionTabs button:focus-visible {
+  outline: 3px solid #1976b9;
+  outline-offset: 2px;
+}
+
+.demoNotice {
+  margin: 0 0 1.25rem;
+  padding: 0.875rem 1rem;
+  border: 1px solid #e4c66b;
+  border-radius: 0.5rem;
+  background: #fff8df;
+  color: #594500;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .root {
+    padding: 1.5rem 1rem;
+  }
+
+  .header {
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .backLabel {
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+  }
+
+  .title {
+    letter-spacing: -0.025em;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+}
